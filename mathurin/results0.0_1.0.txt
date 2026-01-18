@@ -1,0 +1,76 @@
+=============================
+a= 0.0, b= 1.0
+epoch: 0, Val_Loss: 1.2481, Val_Acc: 0.7730, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1489, Val_Acc: 0.8116, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0754, Val_Acc: 0.8430, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0727, Val_Acc: 0.8416, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0558, Val_Acc: 0.8465, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.1576, Val_Acc: 0.8051, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0945, Val_Acc: 0.8309, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0880, Val_Acc: 0.8326, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0689, Val_Acc: 0.8413, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0329, Val_Acc: 0.8552, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0652, Val_Acc: 0.8389, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0337, Val_Acc: 0.8539, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0241, Val_Acc: 0.8573, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0232, Val_Acc: 0.8602, LR: 1.000000e-04
+epoch: 14, Val_Loss: 1.0264, Val_Acc: 0.8574, LR: 1.000000e-04
+epoch: 15, Val_Loss: 1.2348, Val_Acc: 0.7977, LR: 1.000000e-04
+epoch: 16, Val_Loss: 1.0360, Val_Acc: 0.8557, LR: 1.000000e-04
+
+epoch: 0, Val_Loss: 1.2181, Val_Acc: 0.7923, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1567, Val_Acc: 0.8149, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.1245, Val_Acc: 0.8326, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.1040, Val_Acc: 0.8372, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0712, Val_Acc: 0.8523, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0671, Val_Acc: 0.8521, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0526, Val_Acc: 0.8597, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0487, Val_Acc: 0.8625, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0600, Val_Acc: 0.8560, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0341, Val_Acc: 0.8689, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0857, Val_Acc: 0.8498, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0414, Val_Acc: 0.8658, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0425, Val_Acc: 0.8660, LR: 1.000000e-04
+
+epoch: 0, Val_Loss: 1.1975, Val_Acc: 0.7967, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1440, Val_Acc: 0.8154, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0746, Val_Acc: 0.8476, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0568, Val_Acc: 0.8544, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0327, Val_Acc: 0.8643, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0461, Val_Acc: 0.8554, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0096, Val_Acc: 0.8719, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0107, Val_Acc: 0.8742, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0254, Val_Acc: 0.8652, LR: 1.000000e-04
+epoch: 9, Val_Loss: 0.9943, Val_Acc: 0.8821, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0227, Val_Acc: 0.8699, LR: 1.000000e-04
+epoch: 11, Val_Loss: 0.9981, Val_Acc: 0.8759, LR: 1.000000e-04
+epoch: 12, Val_Loss: 0.9980, Val_Acc: 0.8757, LR: 1.000000e-04
+
+epoch: 0, Val_Loss: 1.1733, Val_Acc: 0.8005, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1571, Val_Acc: 0.8052, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0848, Val_Acc: 0.8378, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0642, Val_Acc: 0.8451, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0422, Val_Acc: 0.8600, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0614, Val_Acc: 0.8477, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0474, Val_Acc: 0.8556, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0493, Val_Acc: 0.8541, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0413, Val_Acc: 0.8605, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0280, Val_Acc: 0.8642, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0418, Val_Acc: 0.8633, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0302, Val_Acc: 0.8656, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0329, Val_Acc: 0.8634, LR: 1.000000e-04
+
+  Task 2 (Iter 2) - Before: 0.5589
+  Task 2 (Iter 2) - After:  0.6120
+  Task 3 (Iter 3) - Before: 0.4857
+  Task 3 (Iter 3) - After:  0.5474
+  Task 4 (Iter 4) - Before: 0.4506
+  Task 4 (Iter 4) - After:  0.5093
+  Task 5 (Iter 5) - Before: 0.4263
+  Task 5 (Iter 5) - After:  0.4816
+Forgetting scores per iteration: ['0.2108', '0.2975', '0.3367', '0.3781']
+Average forgetting score: 0.3058
+Final task best accuracies: ['0.7925', '0.8155', '0.8153', '0.8388', '0.8231']
+Final task accuracies: [0.43456506882749196, 0.4047384817183145, 0.4120838636211401, 0.4984982611444831, 0.8231035951091915]
+accuracies: [[0.7925412476813434], [0.5817509518695695, 0.8155435317265125], [0.504393244166748, 0.5087719298245614, 0.8152588920892223], [0.47040661915454457, 0.45646827348745694, 0.486368812378592, 0.8387606702497629], [0.43456506882749196, 0.4047384817183145, 0.4120838636211401, 0.4984982611444831, 0.8231035951091915]]
+Mean Accuracy: 0.5145978540841243

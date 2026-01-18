@@ -1,0 +1,75 @@
+=============================
+a= 1.0, b= 4.0
+epoch: 0, Val_Loss: 1.2481, Val_Acc: 0.7730, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1489, Val_Acc: 0.8116, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0754, Val_Acc: 0.8430, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0727, Val_Acc: 0.8416, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0558, Val_Acc: 0.8465, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.1576, Val_Acc: 0.8051, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0945, Val_Acc: 0.8309, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0880, Val_Acc: 0.8326, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0689, Val_Acc: 0.8413, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0329, Val_Acc: 0.8552, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0652, Val_Acc: 0.8389, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0337, Val_Acc: 0.8539, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0241, Val_Acc: 0.8573, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0232, Val_Acc: 0.8602, LR: 1.000000e-04
+epoch: 14, Val_Loss: 1.0264, Val_Acc: 0.8574, LR: 1.000000e-04
+epoch: 15, Val_Loss: 1.2348, Val_Acc: 0.7977, LR: 1.000000e-04
+epoch: 16, Val_Loss: 1.0360, Val_Acc: 0.8557, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.2214, Val_Acc: 0.7926, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1439, Val_Acc: 0.8231, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.1035, Val_Acc: 0.8421, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0940, Val_Acc: 0.8397, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0814, Val_Acc: 0.8468, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0610, Val_Acc: 0.8587, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0798, Val_Acc: 0.8475, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0564, Val_Acc: 0.8599, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0443, Val_Acc: 0.8636, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0403, Val_Acc: 0.8646, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0555, Val_Acc: 0.8555, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0455, Val_Acc: 0.8666, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0317, Val_Acc: 0.8690, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0363, Val_Acc: 0.8699, LR: 1.000000e-04
+epoch: 14, Val_Loss: 1.1249, Val_Acc: 0.8330, LR: 1.000000e-04
+epoch: 15, Val_Loss: 1.0341, Val_Acc: 0.8688, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.1912, Val_Acc: 0.7981, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.0904, Val_Acc: 0.8427, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0585, Val_Acc: 0.8503, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0225, Val_Acc: 0.8692, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0179, Val_Acc: 0.8683, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0100, Val_Acc: 0.8709, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0040, Val_Acc: 0.8765, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0007, Val_Acc: 0.8776, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0013, Val_Acc: 0.8741, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0071, Val_Acc: 0.8766, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0044, Val_Acc: 0.8750, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.1716, Val_Acc: 0.8007, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1059, Val_Acc: 0.8305, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0742, Val_Acc: 0.8412, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0447, Val_Acc: 0.8550, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0360, Val_Acc: 0.8571, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0338, Val_Acc: 0.8590, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0468, Val_Acc: 0.8535, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0309, Val_Acc: 0.8620, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0314, Val_Acc: 0.8626, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0147, Val_Acc: 0.8700, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0301, Val_Acc: 0.8678, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0124, Val_Acc: 0.8742, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0166, Val_Acc: 0.8718, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0377, Val_Acc: 0.8637, LR: 1.000000e-04
+epoch: 14, Val_Loss: 1.0212, Val_Acc: 0.8709, LR: 1.000000e-04
+  Task 2 (Iter 2) - Before: 0.5589
+  Task 2 (Iter 2) - After:  0.6156
+  Task 3 (Iter 3) - Before: 0.4793
+  Task 3 (Iter 3) - After:  0.5408
+  Task 4 (Iter 4) - Before: 0.4533
+  Task 4 (Iter 4) - After:  0.5083
+  Task 5 (Iter 5) - Before: 0.4313
+  Task 5 (Iter 5) - After:  0.4786
+Forgetting scores per iteration: ['0.2061', '0.3024', '0.3355', '0.3857']
+Average forgetting score: 0.3074
+Final task best accuracies: ['0.7925', '0.8111', '0.8274', '0.8405', '0.8376']
+Final task accuracies: [0.4290246997949819, 0.4020331201836367, 0.40927054725701656, 0.48853936136579196, 0.8375813613966786]
+accuracies: [[0.7925412476813434], [0.5864614858928049, 0.8111165764879489], [0.49397149272674024, 0.5048368585013937, 0.8273829459441355], [0.4658059162354779, 0.45663223479258896, 0.5022439547190033, 0.8404995257666772], [0.4290246997949819, 0.4020331201836367, 0.40927054725701656, 0.48853936136579196, 0.8375813613966786]]
+Mean Accuracy: 0.5132898179996211

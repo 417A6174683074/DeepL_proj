@@ -1,0 +1,72 @@
+=============================
+a= 4.0, b= 0.0
+epoch: 0, Val_Loss: 1.2481, Val_Acc: 0.7730, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1489, Val_Acc: 0.8116, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0754, Val_Acc: 0.8430, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0727, Val_Acc: 0.8416, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0558, Val_Acc: 0.8465, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.1576, Val_Acc: 0.8051, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0945, Val_Acc: 0.8309, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0880, Val_Acc: 0.8326, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0689, Val_Acc: 0.8413, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0329, Val_Acc: 0.8552, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0652, Val_Acc: 0.8389, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0337, Val_Acc: 0.8539, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0241, Val_Acc: 0.8573, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0232, Val_Acc: 0.8602, LR: 1.000000e-04
+epoch: 14, Val_Loss: 1.0264, Val_Acc: 0.8574, LR: 1.000000e-04
+epoch: 15, Val_Loss: 1.2348, Val_Acc: 0.7977, LR: 1.000000e-04
+epoch: 16, Val_Loss: 1.0360, Val_Acc: 0.8557, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.2240, Val_Acc: 0.7905, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1401, Val_Acc: 0.8269, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.1078, Val_Acc: 0.8402, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0864, Val_Acc: 0.8421, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0777, Val_Acc: 0.8492, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0643, Val_Acc: 0.8561, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0619, Val_Acc: 0.8556, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0840, Val_Acc: 0.8510, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0372, Val_Acc: 0.8682, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0396, Val_Acc: 0.8640, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0450, Val_Acc: 0.8636, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0600, Val_Acc: 0.8602, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.1748, Val_Acc: 0.8022, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.0992, Val_Acc: 0.8335, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.1063, Val_Acc: 0.8339, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0721, Val_Acc: 0.8461, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0365, Val_Acc: 0.8626, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0279, Val_Acc: 0.8672, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0103, Val_Acc: 0.8743, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0158, Val_Acc: 0.8678, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0180, Val_Acc: 0.8703, LR: 1.000000e-04
+epoch: 9, Val_Loss: 0.9885, Val_Acc: 0.8818, LR: 1.000000e-04
+epoch: 10, Val_Loss: 0.9986, Val_Acc: 0.8769, LR: 1.000000e-04
+epoch: 11, Val_Loss: 0.9994, Val_Acc: 0.8787, LR: 1.000000e-04
+epoch: 12, Val_Loss: 0.9901, Val_Acc: 0.8823, LR: 1.000000e-04
+epoch: 0, Val_Loss: 1.1722, Val_Acc: 0.7991, LR: 1.000000e-04
+epoch: 1, Val_Loss: 1.1095, Val_Acc: 0.8265, LR: 1.000000e-04
+epoch: 2, Val_Loss: 1.0581, Val_Acc: 0.8462, LR: 1.000000e-04
+epoch: 3, Val_Loss: 1.0383, Val_Acc: 0.8584, LR: 1.000000e-04
+epoch: 4, Val_Loss: 1.0479, Val_Acc: 0.8560, LR: 1.000000e-04
+epoch: 5, Val_Loss: 1.0505, Val_Acc: 0.8512, LR: 1.000000e-04
+epoch: 6, Val_Loss: 1.0306, Val_Acc: 0.8605, LR: 1.000000e-04
+epoch: 7, Val_Loss: 1.0378, Val_Acc: 0.8574, LR: 1.000000e-04
+epoch: 8, Val_Loss: 1.0135, Val_Acc: 0.8678, LR: 1.000000e-04
+epoch: 9, Val_Loss: 1.0383, Val_Acc: 0.8597, LR: 1.000000e-04
+epoch: 10, Val_Loss: 1.0122, Val_Acc: 0.8712, LR: 1.000000e-04
+epoch: 11, Val_Loss: 1.0150, Val_Acc: 0.8711, LR: 1.000000e-04
+epoch: 12, Val_Loss: 1.0162, Val_Acc: 0.8734, LR: 1.000000e-04
+epoch: 13, Val_Loss: 1.0192, Val_Acc: 0.8706, LR: 1.000000e-04
+  Task 2 (Iter 2) - Before: 0.5589
+  Task 2 (Iter 2) - After:  0.6647
+  Task 3 (Iter 3) - Before: 0.4871
+  Task 3 (Iter 3) - After:  0.5925
+  Task 4 (Iter 4) - Before: 0.4626
+  Task 4 (Iter 4) - After:  0.5481
+  Task 5 (Iter 5) - Before: 0.4386
+  Task 5 (Iter 5) - After:  0.5119
+Forgetting scores per iteration: ['0.1131', '0.0966', '0.1000', '0.1181']
+Average forgetting score: 0.1069
+Final task best accuracies: ['0.7925', '0.5661', '0.4959', '0.6064', '0.5766']
+Final task accuracies: [0.5082373328126526, 0.4812264305623873, 0.47679013999598097, 0.5223680050584888, 0.5766165825171847]
+accuracies: [[0.7925412476813434], [0.6794274138436005, 0.5660764059681915], [0.6166162257151225, 0.5487784882767667, 0.4958805010382477], [0.5558186078297374, 0.5181177242170848, 0.48067519592738966, 0.6063863420803035], [0.5082373328126526, 0.4812264305623873, 0.47679013999598097, 0.5223680050584888, 0.5766165825171847]]
+Mean Accuracy: 0.5130476981893388
