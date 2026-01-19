@@ -5,3 +5,5 @@ ipykernel
 numpy
 scikit-learn
 pandas
+seaborn
+matplotlib
