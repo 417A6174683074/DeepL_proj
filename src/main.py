@@ -2,6 +2,7 @@ import torch
 from torch import Tensor
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.tensorboard import SummaryWriter
 import numpy as np
 import pickle  # TODO implement pickalable training loop
 import pandas as pd
@@ -166,7 +167,7 @@ class TraMEL:
         self.epoch = 0
 
     def phase1_train(
-        self, D_t: GroupTrainingSet, *, epochs: int = 50
+        self, D_t: GroupTrainingSet, *, epochs: int = 50, writer: SummaryWriter
     ):  # LIST AS PLACEHOLDER, TODO find correct data type D_t represents the t-th dataset
         """Train model on D_t and E"""
         self.model.train()
@@ -186,12 +187,14 @@ class TraMEL:
 
                 epoch_losses.append(loss.item())
 
-            print(epoch, "epoch", "batch", f"Average loss: {np.mean(epoch_losses[-100:]):.6f}")
+            avg_loss = np.mean(epoch_losses[-100:])
+            writer.add_scalar("Phase1_Train/loss", avg_loss, self.group * epochs + epoch)
+            print(epoch, "epoch", "batch", f"Average loss: {avg_loss:.6f}")
 
     def phase2_examplar_selection(self, D_t: GroupTrainingSet):
         self.E.update_buffer(D_t)
 
-    def phase3_refinement(self, t: int, *, alpha: int = 1, beta: int = 1, epochs=20):
+    def phase3_refinement(self, t: int, *, alpha: int = 1, beta: int = 1, epochs=20, writer: SummaryWriter):
         """Refine the model with the buffer which contains examples from the current dataset and the previous ones.
 
         Args:
@@ -245,10 +248,13 @@ class TraMEL:
 
                 epoch_losses.append(loss.item())
 
-            print(epoch, "epoch", "batch", f"Average loss: {np.mean(epoch_losses[-100:]):.6f}")
+            avg_loss = np.mean(epoch_losses[-100:])
+            writer.add_scalar("Phase3_Refinement/loss", loss.item(), self.group * epochs + epoch)  # type: ignore
+            print(epoch, "epoch", "batch", f"Average loss: {avg_loss:.6f}")
+
         self.f_i_m1.load_state_dict(self.model.state_dict())
 
-    def phase4_test(self, divided_into_tasks_data_path: str) -> float:
+    def phase4_test(self, divided_into_tasks_data_path: str, *, writer: SummaryWriter) -> float:
         """Test the model on all seen tasks and compute overall accuracy
 
         Args:
@@ -279,6 +285,7 @@ class TraMEL:
         all_labels = np.concatenate(all_labels)
 
         accuracy = np.mean(all_preds == all_labels)
+        writer.add_scalar("Phase4_Test/accuracy", accuracy, self.group)
         print(f"Test Accuracy: {accuracy:.4f}")
 
         return accuracy
@@ -342,36 +349,40 @@ def main():
 
     print(tramel)
 
-    for t, D_t in enumerate(load_groups_data(divided_into_tasks_data_path, tramel.groups, "train")):
-        if t < tramel.group:
-            # skip the first few groups if they are already trained in the tramel
-            continue
-        else:
-            tramel.group = t
+    writer = SummaryWriter("./runs/tramel")
+    try:
+        for t, D_t in enumerate(load_groups_data(divided_into_tasks_data_path, tramel.groups, "train")):
+            if t < tramel.group:
+                # skip the first few groups if they are already trained in the tramel
+                continue
+            else:
+                tramel.group = t
 
-        print(f"nb of entries in group: {D_t.nb_entries()}")
-        if tramel.phase == 1:
-            tramel.phase1_train(D_t, epochs=30)
-            tramel.phase = 2
-            tramel.dump()
+            print(f"nb of entries in group: {D_t.nb_entries()}")
+            if tramel.phase == 1:
+                tramel.phase1_train(D_t, epochs=30, writer=writer)
+                tramel.phase = 2
+                tramel.dump()
 
-        if tramel.phase == 2:
-            tramel.phase2_examplar_selection(D_t)
-            tramel.phase = 3
-            tramel.dump()
+            if tramel.phase == 2:
+                tramel.phase2_examplar_selection(D_t)
+                tramel.phase = 3
+                tramel.dump()
 
-        if tramel.phase == 3:
-            tramel.phase3_refinement(t, epochs=10)
-            tramel.phase = 4
-            tramel.dump()
+            if tramel.phase == 3:
+                tramel.phase3_refinement(t, epochs=10, writer=writer)
+                tramel.phase = 4
+                tramel.dump()
 
-        if tramel.phase == 4:
-            tramel.phase4_test(divided_into_tasks_data_path)
-            tramel.phase = 1
-            tramel.dump()
+            if tramel.phase == 4:
+                tramel.phase4_test(divided_into_tasks_data_path, writer=writer)
+                tramel.phase = 1
+                tramel.dump()
 
-        if t == 0:
-            tramel.dump_first_group()
+            if t == 0:
+                tramel.dump_first_group()
+    finally:
+        writer.close()
 
 
 if __name__ == "__main__":
