@@ -23,6 +23,7 @@ from models.simplest_mlp import SimplestMLP
 
 # Exemplar selection strategy
 from exemplar_selection_strategies.random_selection import random_exemplar_selection
+from exemplar_selection_strategies.kmeans import kmeans_exemplar_selection
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ExamplarSelectionStrategy: TypeAlias = Callable[[NDArray[np.float64], int], NDArray[np.float64]]
@@ -343,7 +344,7 @@ def main():
             model = EmberTransformer()
             optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, weight_decay=0.00001)
             K = 30000
-            E = Buffer(random_exemplar_selection, random_exemplar_selection, K)
+            E = Buffer(random_exemplar_selection, kmeans_exemplar_selection, K)
             groups: list[NDArray[np.int64]] = divide_classes_into_groups(total_classes, nb_cl_first_group, nb_groups, nb_cl_per_group)
             tramel = TraMEL(model, E, optimizer, groups)
 
