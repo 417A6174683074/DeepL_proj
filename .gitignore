@@ -2,3 +2,4 @@
 /datasets
 processed_data
 processed_data.zip
+__pycache__
