@@ -81,6 +81,8 @@ class EmberTransformer(nn.Module):
         # Final classifier
         self.classifier = nn.Sequential(nn.LayerNorm(hidden), nn.Linear(hidden, num_classes))
 
+        print(f"in_feats = {in_feats}, num_classes={num_classes}, hidden={hidden}, mlp_hidden={mlp_hidden}, num_layers={num_layers}")
+
     def forward(self, x):
         """
         x: (B, D) Ember features

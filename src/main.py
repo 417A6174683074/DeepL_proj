@@ -26,6 +26,7 @@ from exemplar_selection_strategies.random_selection import random_exemplar_selec
 from exemplar_selection_strategies.kmeans import kmeans_exemplar_selection
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(device)
 ExamplarSelectionStrategy: TypeAlias = Callable[[NDArray[np.float64], int], NDArray[np.float64]]
 
 
@@ -106,19 +107,19 @@ class Buffer:
         self.y_tasks_list.extend(D_t.y_g_list)
         self.last_added_tasks = D_t.y_g_list
 
-    def dataloader(self, batch_size=32, shuffle=True) -> DataLoader:
+    def dataloader(self, batch_size=256, shuffle=True) -> DataLoader:
         X, y = self.get_tensors()
         dataset = TensorDataset(torch.from_numpy(X).float(), torch.from_numpy(y).long())
         return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
 
-def get_dataloader_from_data_and_buffer(D_t: GroupTrainingSet, E: Buffer, batch_size: int = 32, shuffle: bool = True) -> DataLoader:
+def get_dataloader_from_data_and_buffer(D_t: GroupTrainingSet, E: Buffer, batch_size: int = 256, shuffle: bool = True) -> DataLoader:
     """Returns a dataloader with the buffer included as specified in phase 1 initial training of the paper
 
     Args:
         D_t (GroupTrainingSet): Data for the training of the group
         E (Buffer): Data from the buffer
-        batch_size (int, optional): batch size. Defaults to 32.
+        batch_size (int, optional): batch size. Defaults to 256.
         shuffle (bool, optional): shuffle the data. Defaults to True.
 
     Returns:
