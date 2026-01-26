@@ -9,6 +9,8 @@ import pandas as pd
 import random
 import os
 import copy
+import time
+from datetime import timedelta
 
 # static typing - vscode has good built in extensions for it
 from numpy.typing import NDArray
@@ -26,7 +28,11 @@ from exemplar_selection_strategies.random_selection import random_exemplar_selec
 from exemplar_selection_strategies.kmeans import kmeans_exemplar_selection
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
+print(f"CUDA available: {torch.cuda.is_available()}")
+print(f"CUDA device count: {torch.cuda.device_count()}")
+if torch.cuda.is_available():
+    print(f"Current CUDA device: {torch.cuda.current_device()}")
+    print(f"CUDA device name: {torch.cuda.get_device_name(0)}")
 ExamplarSelectionStrategy: TypeAlias = Callable[[NDArray[np.float64], int], NDArray[np.float64]]
 
 
@@ -160,6 +166,8 @@ class TraMEL:
         self.phase: Literal[1, 2, 3, 4] = 1
         self.groups: list[NDArray[np.int64]] = groups
 
+        self.start_time: float = time.time()
+
     def range(self, epochs: int):
         """Custom range method, just to keep the current epoch in pickle and keep the *phases* methods clean with no pickle management"""
         for i in range(self.epoch, epochs):
@@ -174,6 +182,7 @@ class TraMEL:
         """Train model on D_t and E"""
         self.model.train()
         dataloader: DataLoader = get_dataloader_from_data_and_buffer(D_t, self.E)
+        print(f"len dataloader {len(dataloader)}")
         for epoch in self.range(epochs):
             epoch_losses = []
 
@@ -294,14 +303,17 @@ class TraMEL:
 
     ################ Pickle ####################
     def dump(self, name: str = "tramel.pickle") -> None:
-        print("dumped")
+        runtime: float = time.time() - self.start_time
+        print(f"dumped, runtime: {timedelta(seconds=runtime)}")
         with open(name, "wb") as f:
             pickle.dump(self, f)
 
     @classmethod
     def load(cls, name: str = "tramel.pickle") -> "TraMEL":
         with open(name, "rb") as f:
-            return pickle.load(f)
+            tramel = pickle.load(f)
+            tramel.start_time = time.time()
+            return tramel
 
     def dump_first_group(self):
         """Since first group specifically takes a long time to train
