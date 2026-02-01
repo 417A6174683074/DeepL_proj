@@ -166,7 +166,8 @@ class TraMEL:
         self.phase: Literal[1, 2, 3, 4] = 1
         self.groups: list[NDArray[np.int64]] = groups
 
-        self.start_time: float = time.time()
+        self.runtime: timedelta = timedelta(0)
+        self.last_dump_time: float = time.time()
 
     def range(self, epochs: int):
         """Custom range method, just to keep the current epoch in pickle and keep the *phases* methods clean with no pickle management"""
@@ -303,8 +304,10 @@ class TraMEL:
 
     ################ Pickle ####################
     def dump(self, name: str = "tramel.pickle") -> None:
-        runtime: float = time.time() - self.start_time
-        print(f"dumped, runtime: {timedelta(seconds=runtime)}")
+        now: float = time.time()
+        self.runtime += timedelta(seconds=now - self.last_dump_time)
+        self.last_dump_time = now
+        print(f"dumped, runtime: {self.runtime}")
         with open(name, "wb") as f:
             pickle.dump(self, f)
 
@@ -312,7 +315,7 @@ class TraMEL:
     def load(cls, name: str = "tramel.pickle") -> "TraMEL":
         with open(name, "rb") as f:
             tramel = pickle.load(f)
-            tramel.start_time = time.time()
+            tramel.last_dump_time = time.time()
             return tramel
 
     def dump_first_group(self):
@@ -329,6 +332,7 @@ class TraMEL:
 epoch: {self.epoch}
 phase: {self.phase}
 model: {self.model} 
+runtime: {self.runtime}
 groups: {"\n        ".join([str(g) for g in self.groups])}
 """
 
@@ -374,7 +378,7 @@ def main():
 
             print(f"nb of entries in group: {D_t.nb_entries()}")
             if tramel.phase == 1:
-                tramel.phase1_train(D_t, epochs=30, writer=writer)
+                tramel.phase1_train(D_t, epochs=50, writer=writer)
                 tramel.phase = 2
                 tramel.dump()
 
@@ -384,7 +388,7 @@ def main():
                 tramel.dump()
 
             if tramel.phase == 3:
-                tramel.phase3_refinement(t, epochs=10, writer=writer)
+                tramel.phase3_refinement(t, epochs=20, writer=writer)
                 tramel.phase = 4
                 tramel.dump()
 
