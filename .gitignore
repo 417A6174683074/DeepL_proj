@@ -4,4 +4,4 @@ processed_data
 processed_data.zip
 __pycache__
 runs
-tramel.pickle
+*.pickle
