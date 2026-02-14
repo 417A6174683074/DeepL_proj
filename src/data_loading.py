@@ -72,6 +72,24 @@ def tests_dataloader(divided_into_tasks_data_path, tasks: list[int]) -> DataLoad
         DataLoader: DataLoader
     """
     X_list = [load_task_i(divided_into_tasks_data_path, task, "test") for task in tasks]
+    print(tasks)
+    X_combined: NDArray[np.float64] = np.concatenate(X_list, axis=0)
+    y_combined: NDArray[np.int64] = np.concatenate([np.full(X.shape[0], task, dtype=np.int64) for X, task in zip(X_list, tasks)], axis=0)
+    dataset = TensorDataset(torch.from_numpy(X_combined).float(), torch.from_numpy(y_combined).long())
+    return DataLoader(dataset, batch_size=32, shuffle=False)
+
+
+def train_dataloader(divided_into_tasks_data_path, tasks: list[int]) -> DataLoader:
+    """Dataloader for the tasks already trained on
+
+    Args:
+        divided_into_tasks_data_path (_type_): path to divided data
+        tasks (list[int]): list of trained tasks
+
+    Returns:
+        DataLoader: DataLoader
+    """
+    X_list = [load_task_i(divided_into_tasks_data_path, task, "train") for task in tasks]
     X_combined: NDArray[np.float64] = np.concatenate(X_list, axis=0)
     y_combined: NDArray[np.int64] = np.concatenate([np.full(X.shape[0], task, dtype=np.int64) for X, task in zip(X_list, tasks)], axis=0)
     dataset = TensorDataset(torch.from_numpy(X_combined).float(), torch.from_numpy(y_combined).long())

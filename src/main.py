@@ -16,10 +16,12 @@ from datetime import timedelta
 from numpy.typing import NDArray
 from typing import Literal, Generator, Callable, TypeAlias
 
-from data_loading import GroupTrainingSet, tests_dataloader, load_groups_data
+from data_loading import GroupTrainingSet, tests_dataloader, load_groups_data, train_dataloader
 
 # models
 from models.ember_transformer import EmberTransformer
+from models.resnet import ResNet
+from models.tabnet import TabNet
 from models.simple_mpl import SimpleMLP
 from models.simplest_mlp import SimplestMLP
 
@@ -119,7 +121,7 @@ class Buffer:
         return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
 
-def get_dataloader_from_data_and_buffer(D_t: GroupTrainingSet, E: Buffer, batch_size: int = 256, shuffle: bool = True) -> DataLoader:
+def get_dataloader_from_data_and_buffer(D_t: GroupTrainingSet, E: Buffer, batch_size: int = 1024, shuffle: bool = True) -> DataLoader:
     """Returns a dataloader with the buffer included as specified in phase 1 initial training of the paper
 
     Args:
@@ -168,6 +170,10 @@ class TraMEL:
 
         self.runtime: timedelta = timedelta(0)
         self.last_dump_time: float = time.time()
+
+        self.accuracies = []
+        self.train_accuracies = []
+        self.runtimes = []
 
     def range(self, epochs: int):
         """Custom range method, just to keep the current epoch in pickle and keep the *phases* methods clean with no pickle management"""
@@ -266,21 +272,43 @@ class TraMEL:
 
         self.f_i_m1.load_state_dict(self.model.state_dict())
 
-    def phase4_test(self, divided_into_tasks_data_path: str, *, writer: SummaryWriter) -> float:
+    def phase4_test(self, divided_into_tasks_data_path: str, *, writer: SummaryWriter) -> tuple[float, float]:
         """Test the model on all seen tasks and compute overall accuracy
 
         Args:
             divided_into_tasks_data_path: Path to divided task data
 
         Returns:
-            float: Overall accuracy on all seen tasks
+            tuple[float, float]: (train_accuracy, test_accuracy) on all seen tasks
         """
         self.model.eval()
         seen_tasks = self.E.y_tasks_list
+
+        train_set_dataloader = train_dataloader(divided_into_tasks_data_path, seen_tasks)
         test_dataloader = tests_dataloader(divided_into_tasks_data_path, seen_tasks)
 
-        all_preds = []
-        all_labels = []
+        # Evaluate on TRAIN set
+        train_preds = []
+        train_labels = []
+
+        with torch.no_grad():
+            for X, y in train_set_dataloader:
+                X = X.to(device)
+                y = y.to(device)
+
+                logits = self.model(X)
+                preds = torch.argmax(logits, dim=1)
+
+                train_preds.append(preds.cpu().numpy())
+                train_labels.append(y.cpu().numpy())
+
+        train_preds = np.concatenate(train_preds)
+        train_labels = np.concatenate(train_labels)
+        train_accuracy = np.mean(train_preds == train_labels)
+
+        # Evaluate on TEST set
+        test_preds = []
+        test_labels = []
 
         with torch.no_grad():
             for X, y in test_dataloader:
@@ -290,17 +318,26 @@ class TraMEL:
                 logits = self.model(X)
                 preds = torch.argmax(logits, dim=1)
 
-                all_preds.append(preds.cpu().numpy())
-                all_labels.append(y.cpu().numpy())
+                test_preds.append(preds.cpu().numpy())
+                test_labels.append(y.cpu().numpy())
 
-        all_preds = np.concatenate(all_preds)
-        all_labels = np.concatenate(all_labels)
+        test_preds = np.concatenate(test_preds)
+        test_labels = np.concatenate(test_labels)
+        test_accuracy = np.mean(test_preds == test_labels)
 
-        accuracy = np.mean(all_preds == all_labels)
-        writer.add_scalar("Phase4_Test/accuracy", accuracy, self.group)
-        print(f"Test Accuracy: {accuracy:.4f}")
+        # Log to tensorboard
+        writer.add_scalar("Phase4_Test/train_accuracy", train_accuracy, self.group)
+        writer.add_scalar("Phase4_Test/test_accuracy", test_accuracy, self.group)
 
-        return accuracy
+        # Print results
+        print(f"Train Accuracy: {train_accuracy:.4f}")
+        print(f"Test Accuracy: {test_accuracy:.4f}")
+
+        self.train_accuracies.append(train_accuracy)
+        self.accuracies.append(test_accuracy)
+        self.runtimes.append(self.runtime)
+
+        return train_accuracy, test_accuracy
 
     ################ Pickle ####################
     def dump(self, name: str = "tramel.pickle") -> None:
@@ -358,10 +395,11 @@ def main():
             print("No pickle found starting from fresh instance")
 
             # Hyperparameters of the training and model
-            model = EmberTransformer()
-            optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, weight_decay=0.00001)
+            model = TabNet()
+            optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.0001)
+            # K = 30000
             K = 30000
-            E = Buffer(random_exemplar_selection, kmeans_exemplar_selection, K)
+            E = Buffer(random_exemplar_selection, random_exemplar_selection, K)
             groups: list[NDArray[np.int64]] = divide_classes_into_groups(total_classes, nb_cl_first_group, nb_groups, nb_cl_per_group)
             tramel = TraMEL(model, E, optimizer, groups)
 
@@ -401,6 +439,9 @@ def main():
                 tramel.dump_first_group()
     finally:
         writer.close()
+
+    print(tramel.accuracies)
+    print(tramel.runtimes)
 
 
 if __name__ == "__main__":
