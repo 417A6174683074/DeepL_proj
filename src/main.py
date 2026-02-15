@@ -396,10 +396,10 @@ def main():
 
             # Hyperparameters of the training and model
             model = TabNet()
-            optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.0001)
+            optimizer = torch.optim.AdamW(model.parameters(), lr=0.0005)
             # K = 30000
             K = 30000
-            E = Buffer(random_exemplar_selection, random_exemplar_selection, K)
+            E = Buffer(random_exemplar_selection, kmeans_exemplar_selection, K)
             groups: list[NDArray[np.int64]] = divide_classes_into_groups(total_classes, nb_cl_first_group, nb_groups, nb_cl_per_group)
             tramel = TraMEL(model, E, optimizer, groups)
 
@@ -416,7 +416,7 @@ def main():
 
             print(f"nb of entries in group: {D_t.nb_entries()}")
             if tramel.phase == 1:
-                tramel.phase1_train(D_t, epochs=50, writer=writer)
+                tramel.phase1_train(D_t, epochs=80, writer=writer)
                 tramel.phase = 2
                 tramel.dump()
 
@@ -426,7 +426,7 @@ def main():
                 tramel.dump()
 
             if tramel.phase == 3:
-                tramel.phase3_refinement(t, epochs=20, writer=writer)
+                tramel.phase3_refinement(t, epochs=50, writer=writer)
                 tramel.phase = 4
                 tramel.dump()
 
