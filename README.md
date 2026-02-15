@@ -21,7 +21,7 @@ IoT23 : data/IoT23/store_by_capture.py -> capture_preprocess.py (saves to /scrat
 - training with default arguments(kmeans exemplar selection)
 
 ### XGBoost
-- to run xgboost, follow all the steps from above and run the script in xgboost/main_xg.py 
+- to run xgboost, follow all the setup steps from the original project [TraMEL](https://github.com/atg205/code) and run xgboost/main_xg.py
 ## Dependencies & Setup
 
 A minimal set of Python packages is required to run the plotting and evaluation scripts. Create a virtual environment and install dependencies from `requirements.txt`:
