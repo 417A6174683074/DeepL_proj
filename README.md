@@ -33,3 +33,11 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
+## How to run the our code
+
+We have an other preprocessing step for the data preprocessing and then the code is run from the *main.py* file
+```bash
+python src/preprocess.py
+python src/main.py
+```
+
